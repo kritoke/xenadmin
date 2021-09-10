@@ -44,11 +44,10 @@ using XenAdmin.Core;
 using XenAdmin.XenSearch;
 using XenAdmin.Plugins.UI;
 using XenAdminTests.DialogTests;
-using XenAdminTests.DialogTests.PluginDialogTests;
 
 namespace XenAdminTests.PluginTests
 {
-    [TestFixture, Ignore]
+    [TestFixture, Ignore("None")]
     public class PluginTest_TabPage : TabsAndMenus.TabsAndMenus
     {
         public PluginTest_TabPage()
@@ -57,7 +56,7 @@ namespace XenAdminTests.PluginTests
 
         }
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void SetUp_TabPagePlugin()
         {
             CheckHelp = false;
@@ -140,7 +139,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnyDefaultTemplate());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -150,7 +149,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnyFolder());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -160,7 +159,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnyHost());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -170,7 +169,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnyNetwork());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -180,7 +179,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnyPool());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -190,7 +189,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnyPoolOfOne());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -200,7 +199,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnySnapshot());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -210,7 +209,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnySR());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -220,7 +219,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnyUserTemplate());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -230,7 +229,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnyVBD());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -240,7 +239,7 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnyVIF());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
@@ -250,11 +249,11 @@ namespace XenAdminTests.PluginTests
             MW(delegate()
             {
                 SelectInTree(GetAnyVM());
-                Placeholders.SubstituteURL(GetAllProperties(), Program.MainWindow.SelectedXenObject);
+                Placeholders.SubstituteUri(GetAllProperties(), Program.MainWindow.SelectedXenObject);
             });
         }
 
-        [TestFixtureTearDown]
+        [TearDown]
         public void TearDown_TabPagePlugin()
         {
             MW(delegate()

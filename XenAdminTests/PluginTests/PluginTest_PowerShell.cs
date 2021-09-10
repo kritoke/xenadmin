@@ -39,7 +39,6 @@ using System.Windows.Forms;
 using System.IO;
 using XenAdmin.Plugins.UI;
 using XenAdminTests.DialogTests;
-using XenAdminTests.DialogTests.PluginDialogTests;
 using XenAdmin.Core;
 
 namespace XenAdminTests.PluginTests
@@ -47,7 +46,7 @@ namespace XenAdminTests.PluginTests
     [TestFixture, Ignore]
     public class PluginTest_PowerShell : MainWindowLauncher_TestFixture
     {
-        [TestFixtureSetUp]
+        [SetUp]
         public void SetUp_PowerShellPlugin()
         {
             MW(delegate()
@@ -156,7 +155,7 @@ namespace XenAdminTests.PluginTests
                 CheckMenuItemMissing("Help", "help_PowerShellTest1");
         }
 
-        [TestFixtureTearDown]
+        [TearDown]
         public void TearDown_PowerShellPlugin()
         {
             MW(delegate()

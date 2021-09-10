@@ -915,7 +915,7 @@ namespace XenAdmin.Network
                 }
                 return error.Message;
             }
-            else if (error is NullReferenceException && error.Source.StartsWith("CookComputing"))
+            else if (error is NullReferenceException && (error.Source.StartsWith("Kveer") || error.Source.StartsWith("CookComputing")))
             {
                 return string.Format(Messages.CONNCET_CONNECTION_FAILURE, this.Hostname);
             }

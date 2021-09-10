@@ -52,5 +52,16 @@ namespace XenAdminTests
         /// Unit tests that require launching of MainWindow and real databases
         /// </summary>
         public const string MainWindow = "MainWindow";
+
+        /// <summary>
+        /// UI tests
+        /// </summary>
+        public const string UICategoryA = "UICategoryA";
+        public const string UICategoryB = "UICategoryB";
+
+        /// <summary>
+        /// Smoke tests
+        /// </summary>
+        public const string SmokeTest = "SmokeTest";
     }
 }
