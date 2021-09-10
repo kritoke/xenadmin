@@ -33,10 +33,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Web.Script.Serialization;
 using XenAdmin.Model;
 using XenAPI;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace XenAdmin.Actions
 {
@@ -185,8 +185,7 @@ namespace XenAdmin.Actions
                 return -1;
             try
             {
-                var serializer = new JavaScriptSerializer();
-                Dictionary<string, object> result = serializer.DeserializeObject(jsonString) as Dictionary<string, object>;
+                Dictionary<string, object> result = JsonConvert.DeserializeObject(jsonString) as Dictionary<string, object>;
                 var progress = result != null && result.ContainsKey(uploadUuid) ? Convert.ToDouble(result[uploadUuid]) : -1;
                 return progress >= 0 && progress <= 100 ? progress : -1;
             }
@@ -212,7 +211,7 @@ namespace XenAdmin.Actions
             {
                 result = streamReader.ReadToEnd();
             }
-            TemplateResponse response = new JavaScriptSerializer().Deserialize<TemplateResponse>(result);
+            TemplateResponse response = JsonConvert.DeserializeObject<TemplateResponse>(result);
             return response.results;
         }
 

@@ -316,7 +316,7 @@ namespace XenAdmin.Controls.XenSearch
 
         public override void OpenChooseColumnsMenu(Point point)
         {
-            ContextMenu contextMenu = new ContextMenu();
+            ContextMenuStrip contextMenu = new ContextMenuStrip();
 
             foreach (String column in Columns.Keys)
             {
@@ -327,7 +327,7 @@ namespace XenAdmin.Controls.XenSearch
                     continue;
 
                 String columnCopy = column;
-                MenuItem item = new MenuItem(GetI18nColumnName(column).Ellipsise(30));
+                ToolStripMenuItem item = new ToolStripMenuItem(GetI18nColumnName(column).Ellipsise(30));
                 item.Checked = Columns[column];
                 item.Enabled = IsMovableColumn(column);
 
@@ -338,7 +338,7 @@ namespace XenAdmin.Controls.XenSearch
                     Refresh();
                 };
 
-                contextMenu.MenuItems.Add(item);
+                contextMenu.Items.Add(item);
             }
 
             contextMenu.Show(this, point);

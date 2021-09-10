@@ -38,7 +38,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Threading;
-using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 using XenAdmin.Model;
 using XenAdmin.Plugins;
 using XenAPI;
@@ -122,7 +122,7 @@ namespace XenAdmin.Core
                 System = new SystemInfo
                 {
                     Version = Assembly.GetExecutingAssembly().GetName().Version.ToString(),
-                    DotNetVersion = Environment.Version.ToString(4),
+                    DotNetVersion = Environment.Version.ToString(),
                     Culture = Thread.CurrentThread.CurrentUICulture.EnglishName,
                     OsVersion = Environment.OSVersion.ToString(),
                     OsCulture = CultureInfo.CurrentUICulture.EnglishName,
@@ -178,7 +178,7 @@ namespace XenAdmin.Core
             }
 
             var obj = new Dictionary<string, object> {{Messages.XENCENTER, metadata}};
-            return new JavaScriptSerializer().Serialize(obj);
+            return JsonConvert.SerializeObject(obj);
         }
 
         private static string GetLocalIPAddress()

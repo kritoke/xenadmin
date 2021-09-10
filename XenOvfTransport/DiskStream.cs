@@ -58,7 +58,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using DiscUtils;
+using DiscUtils.Streams;
 using DiscUtils.Iscsi;
 
 

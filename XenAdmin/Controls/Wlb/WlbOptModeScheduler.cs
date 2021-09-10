@@ -729,20 +729,20 @@ namespace XenAdmin.Controls.Wlb
                     // usage a little clunky)
                     htInfo.Item.Selected = true;
                     //create the context menu and figure out which item(s) to show
-                    MenuItem enableTask;
+                    ToolStripMenuItem enableTask;
                     WlbScheduledTask task = TaskFromItem(htInfo.Item);                    
                     
-                    ContextMenu menu = new ContextMenu();
+                    ContextMenuStrip menu = new ContextMenuStrip();
                     if (task.Enabled)
                     {
-                        enableTask = new MenuItem(Messages.DISABLE, EnableTask_Click);
+                        enableTask = new ToolStripMenuItem(Messages.DISABLE, null, EnableTask_Click);
 
                     }
                     else
                     {
-                        enableTask = new MenuItem(Messages.ENABLE, EnableTask_Click);
+                        enableTask = new ToolStripMenuItem(Messages.ENABLE, null, EnableTask_Click);
                     }
-                    menu.MenuItems.Add(enableTask);
+                    menu.Items.Add(enableTask);
                     menu.Show(lvTaskList, e.Location);
                 }
             }           

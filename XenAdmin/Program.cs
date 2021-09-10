@@ -467,7 +467,7 @@ namespace XenAdmin
         private static void logSystemDetails()
         {
             log.InfoFormat("Version: {0}", Assembly.GetExecutingAssembly().GetName().Version);
-            log.InfoFormat(".NET runtime version: {0}", Environment.Version.ToString(4));
+            log.InfoFormat(".NET runtime version: {0}", Environment.Version.ToString());
             log.InfoFormat("OS version: {0}", Environment.OSVersion);
             log.InfoFormat("UI Culture: {0}", Thread.CurrentThread.CurrentUICulture.EnglishName);
             log.InfoFormat("Bitness: {0}-bit", IntPtr.Size * 8);
@@ -1028,9 +1028,9 @@ namespace XenAdmin
                 AuthenticationManager.Unregister(module);
 
             var authSetting = (HTTP.ProxyAuthenticationMethod)Properties.Settings.Default.ProxyAuthenticationMethod;
-            if (authSetting == HTTP.ProxyAuthenticationMethod.Basic)
+            if (authSetting == HTTP.ProxyAuthenticationMethod.Basic && BasicAuthenticationModule != null)
                 AuthenticationManager.Register(BasicAuthenticationModule);
-            else
+            else if (authSetting == HTTP.ProxyAuthenticationMethod.Digest && DigestAuthenticationModule != null)
                 AuthenticationManager.Register(DigestAuthenticationModule);
 
             HTTP.CurrentProxyAuthenticationMethod = authSetting;

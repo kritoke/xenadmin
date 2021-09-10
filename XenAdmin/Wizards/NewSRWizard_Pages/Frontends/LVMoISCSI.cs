@@ -41,7 +41,6 @@ using XenAdmin.Controls;
 using XenAdmin.Dialogs;
 using System.Drawing;
 using System.Linq;
-using System.Web.Script.Serialization;
 using XenAdmin.Utils;
 using XenCenterLib;
 

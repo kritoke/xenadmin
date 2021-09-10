@@ -36,7 +36,7 @@ using XenAPI;
 using XenAdmin.Diagnostics.Problems;
 using XenAdmin.Diagnostics.Problems.PoolProblem;
 using System.Collections.Generic;
-using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace XenAdmin.Diagnostics.Checks
 {
@@ -67,8 +67,7 @@ namespace XenAdmin.Diagnostics.Checks
             try
             {
                 var result = Host.call_plugin(Host.Connection.Session, Host.opaque_ref, "prepare_host_upgrade.py", "getVersion", _installMethodConfig);
-                var serializer = new JavaScriptSerializer();
-                var version = (Dictionary<string, object>)serializer.DeserializeObject(result);
+                var version = (Dictionary<string, object>)JsonConvert.DeserializeObject(result);
                 upgradePlatformVersion = version.ContainsKey("platform-version") ? (string)version["platform-version"] : null;
             }
             catch (Exception exception)

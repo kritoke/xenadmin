@@ -35,10 +35,10 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Web.Script.Serialization;
 using XenAdmin;
 using XenAdmin.Network;
 using XenAdmin.Core;
+using Newtonsoft.Json;
 
 namespace XenServerHealthCheck
 {
@@ -51,7 +51,6 @@ namespace XenServerHealthCheck
         private const string INITIATE_UPLOAD_STRING = "{0}bundle/?size={1}&name={2}";
         private const int CHUNK_SIZE = 1 * 1024 * 1024;
         private const int CHUNK_UPLOAD_TRIES = 3;
-        private JavaScriptSerializer serializer;
         private HttpClient httpClient;
 
         private readonly int verbosityLevel;
@@ -66,8 +65,6 @@ namespace XenServerHealthCheck
         {
             uploadToken = token;
             verbosityLevel = verbosity;
-            serializer = new JavaScriptSerializer();
-            serializer.MaxJsonLength = int.MaxValue;
             if (!string.IsNullOrEmpty(uploadUrl))
             {
                 this.uploadUrl = uploadUrl;
@@ -110,7 +107,7 @@ namespace XenServerHealthCheck
                             var respString = response.Content.ReadAsStringAsync().Result;
 
                             // Get the upload uuid
-                            var res = (Dictionary<string, object>) serializer.DeserializeObject(respString);
+                            var res = (Dictionary<string, object>)JsonConvert.DeserializeObject(respString);
                             return res.ContainsKey("id") ? (string) res["id"] : "";
                         }
                         log.ErrorFormat("Failed to initiate a CIS upload. POST request returned {0} ({1})", response.StatusCode, response.ReasonPhrase);
@@ -154,7 +151,7 @@ namespace XenServerHealthCheck
                             var respString = response.Content.ReadAsStringAsync().Result;
 
                             // After sending every chunk upload request to server, response will contain a status indicating if it is complete.
-                            var res = (Dictionary<string, object>) serializer.DeserializeObject(respString);
+                            var res = (Dictionary<string, object>)JsonConvert.DeserializeObject(respString);
                             log.InfoFormat("The status of chunk upload: {0}", res.ContainsKey("status") ? res["status"] : "");
                             return true;
                         }

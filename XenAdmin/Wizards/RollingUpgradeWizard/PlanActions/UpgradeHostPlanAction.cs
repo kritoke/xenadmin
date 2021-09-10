@@ -32,6 +32,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using XenAdmin.Core;
 using XenAPI;
 
@@ -56,8 +57,7 @@ namespace XenAdmin.Wizards.RollingUpgradeWizard.PlanActions
             try
             {
                 var result = Host.call_plugin(session, HostXenRef.opaque_ref, "prepare_host_upgrade.py", "getVersion", _arguments);
-                var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                var version = (Dictionary<string, object>)serializer.DeserializeObject(result);
+                var version = (Dictionary<string, object>)JsonConvert.DeserializeObject(result);
                 productVersion = version.ContainsKey("product-version") ? (string)version["product-version"] : null;
             }
             catch (Exception exception)

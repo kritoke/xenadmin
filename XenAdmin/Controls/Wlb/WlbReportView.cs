@@ -436,7 +436,9 @@ namespace XenAdmin.Controls.Wlb
             {
                 get { return (Messages.WLB_REPORT_WHOLEPAGE); }
             }
-        }
+
+			public string FoundResultText => throw new NotImplementedException();
+		}
 
         #endregion
 

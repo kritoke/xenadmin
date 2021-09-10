@@ -119,10 +119,9 @@ namespace XenAdmin.ServerDBs
 
         private TypeBuilder CreateTypeBuilder()
         {
-            AppDomain appDomain = AppDomain.CurrentDomain;
             AssemblyName assemblyName = new AssemblyName();
             assemblyName.Name = "DynamicProxyAssembly";
-            AssemblyBuilder assemblyBuilder = appDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
+            AssemblyBuilder assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
             ModuleBuilder moduleBuilder = assemblyBuilder.DefineDynamicModule("MockModule");
             return moduleBuilder.DefineType(ProxyClassName, TypeAttributes.Public, ProxySuperClass, ProxyInterfaces);
         }

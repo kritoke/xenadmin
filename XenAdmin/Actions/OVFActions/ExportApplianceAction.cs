@@ -61,7 +61,7 @@ namespace XenAdmin.Actions.OVFActions
 		private readonly bool m_compressOVFfiles;
         private readonly bool m_shouldVerify;
 		private OvfCompressor m_compressor;
-        private Export m_transportAction;
+        private XenOvfTransport.Export m_transportAction;
 
 		#endregion
 
@@ -112,7 +112,7 @@ namespace XenAdmin.Actions.OVFActions
 			EnvelopeType env;
 			try
 			{
-                m_transportAction = new Export(uri, session)
+                m_transportAction = new XenOvfTransport.Export(uri, session)
 				                    	{
 				                    		UpdateHandler = UpdateHandler,
 				                    		ShouldVerifyDisks = m_shouldVerify,

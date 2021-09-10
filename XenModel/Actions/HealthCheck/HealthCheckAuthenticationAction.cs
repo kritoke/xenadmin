@@ -33,7 +33,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Runtime.Serialization;
-using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace XenAdmin.Actions
 {
@@ -118,7 +118,7 @@ namespace XenAdmin.Actions
 
         private string GetIdentityToken()
         {
-            var json = new JavaScriptSerializer().Serialize(new
+            var json = JsonConvert.SerializeObject(new
             {
                 username,
                 password
@@ -144,13 +144,13 @@ namespace XenAdmin.Actions
         
         private string GetUploadGrantToken(string identityToken)
         {
-            var json = new JavaScriptSerializer().Serialize(new
+            var json = JsonConvert.SerializeObject(new
             {
                 identity_token = identityToken
             });
             if (tokenExpiration != 0)
             {
-                json = new JavaScriptSerializer().Serialize(new
+                json = JsonConvert.SerializeObject(new
                 {
                     identity_token = identityToken,
                     expiration = tokenExpiration
@@ -171,7 +171,7 @@ namespace XenAdmin.Actions
 
         private string GetUploadToken(string grantToken)
         {
-            var json = new JavaScriptSerializer().Serialize(new
+            var json = JsonConvert.SerializeObject(new
             {
                 grant_token = grantToken,
                 product_key = productKey,
@@ -191,7 +191,7 @@ namespace XenAdmin.Actions
 
         private string GetDiagnosticToken(string identityToken)
         {
-            var json = new JavaScriptSerializer().Serialize(new
+            var json = JsonConvert.SerializeObject(new
             {
                 agent = "XenServer",
                 max_age = tokenExpiration
@@ -230,7 +230,7 @@ namespace XenAdmin.Actions
             {
                 result = streamReader.ReadToEnd();
             }
-            TemplateResponse response = new JavaScriptSerializer().Deserialize<TemplateResponse>(result);
+            TemplateResponse response = JsonConvert.DeserializeObject<TemplateResponse>(result);
             return response.Token;
         }
 
