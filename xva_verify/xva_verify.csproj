@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net7.0-windows</TargetFramework>
 
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<AppDesignerFolder>Properties</AppDesignerFolder>
@@ -19,6 +19,7 @@
 		<Content Include="..\Branding\Images\AppIcon.ico" />
 		<None Include="app.config" />
 	</ItemGroup>
+
 
 	<PropertyGroup>
 		<PostBuildEvent Condition=" '$(Configuration)' == 'Release' ">mt.exe -verbose -manifest "$(ProjectDir)xva_verify.manifest" -outputresource:"$(TargetDir)$(TargetFileName)";#1</PostBuildEvent>

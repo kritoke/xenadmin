@@ -40,3 +40,8 @@ ServiceFabricBackup/
 
 .vs
 .vscode
+
+.idea
+.idea/.idea.XenAdmin/.idea/vcs.xml
+.idea/.idea.XenAdmin/.idea/indexLayout.xml
+.idea/.idea.XenAdmin/.idea/encodings.xml

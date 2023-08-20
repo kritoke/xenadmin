@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net7.0-windows</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -14,9 +14,9 @@
 
 	<ItemGroup>
 		<PackageReference Include="Core.System.Configuration.Install" Version="1.1.0" />
-		<PackageReference Include="Core.System.ServiceProcess" Version="1.0.2" />
-		<PackageReference Include="Kveer.XmlRPC" Version="1.2.0" />
-		<PackageReference Include="log4net" Version="2.0.12" />
+		<PackageReference Include="Core.System.ServiceProcess" Version="2.0.1" />
+		<PackageReference Include="Kveer.XmlRPC" Version="1.2.1" />
+		<PackageReference Include="log4net" Version="2.0.15" />
 	</ItemGroup>
 
 	<ItemGroup>
